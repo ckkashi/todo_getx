@@ -9,18 +9,30 @@ class NotesController extends GetxController{
     notes.add(n);
     storage.write('notes', notes);
   }
+  void delete(int index){
+    notes.removeAt(index);
+    storage.write('notes', notes);
+    update();
+  }
   @override
   void onInit() {
     // TODO: implement onInit
-    super.onInit();
+    
 
     try{
       if(storage.read('notes') != null)
         notes = storage.read('notes');
-      
     }catch(e){}
 
     update();
+    super.onInit();
 
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    storage.write('notes', notes);
+    super.onClose();
   }
 }

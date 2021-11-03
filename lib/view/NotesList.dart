@@ -51,9 +51,12 @@ class NotesList extends StatelessWidget {
                         title: Text(obj.title.toString(),
                         style: GoogleFonts.lato(
                               fontSize: 20.sp,
-                              
                             ),
                         ),
+                        trailing: IconButton(onPressed: (){
+                          controller.delete(index);
+                        }, icon: Icon(Icons.delete),
+                      ),
                       ),
                       Divider()
                     ],
